@@ -3,11 +3,13 @@ noInput = True # have boolean that i can change to break out of while loop
 # keep looping if i haven't changed my boolean yet
 while noInput:
 
-    # ask user to put in a final number to play fizzbuzz to
-    rangeF = input("up to what number would you like to play fizzbuzz to\n")
+    # ask user to put in a starting and final number to play fizzbuzz to
 
-    # make sure user input is an integer which is larger than 0
-    if rangeF.isnumeric() and int(rangeF) > 0:
+    rangeS = input("from what number would you like to begin fizzbuzz from\n")
+    rangeF = input("up to what final number would you like to play fizzbuzz\n")
+
+    # make sure user input is an integer which is larger than 0 and start point is lower than end
+    if (rangeF.isnumeric() and int(rangeF) > 0) and (rangeS.isnumeric() and int(rangeS) < int(rangeF)):
 
         # ask user for first word to use instead of fizz
         firstWord = input('next, add an alternative word for \'fizz\', leave it empty to keep fizz.\n')
@@ -42,8 +44,9 @@ while noInput:
         # at least you get to try again this time instead of having a default value
         print('you gave a weird response idk try again')
 
-# iterate over a loop that contains numbers from 1 up to the input number (+1 because end range isn't inclusive!!!)
-for x in range(1, int(rangeF)+1):
+# iterate over a loop that contains numbers from starting input number up to the final input number (+1 because end
+# range isn't inclusive!!!)
+for x in range(int(rangeS), int(rangeF)+1):
 
     # if they're a factor of 3 and 5 then by simplification they're also a factor of 15, makes it easier to write,
     # so we bring out the fizzbuzz
