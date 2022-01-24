@@ -96,16 +96,21 @@ else:
     import keyboard
     import sys
     from threading import Thread
-    xenoPrint("the Xenobuzz attacks in multiples of 3 and 5")
-    xenoPrint("you must hold back the xenobuzz infiltration, you are the last line of defense and if you don't block them in time you will doom the planet yada yada")
+    xenoPrint("The Xenobuzz attacks in multiples of 3 and 5")
+    xenoPrint("You must hold back the Xenobuzz infiltration. You are the last line of defense and if you don't block them in time you will doom the planet yada yada")
     while True:
         xenoNL()
-        menuInput = xenoInput("enter 'C' for controls, 'S' to start the game and 'F' to exit the game.")
+        menuInput = xenoInput("Enter 'C' for controls, 'S' to start the game and 'F' to exit the game.")
         if menuInput.upper() == "C":
             xenoNL()
             xenoPrint('Once the game begins, you have to press buttons in accordance with whether they will be a regular enemy ("S"),')
             xenoPrint('a xeno enemy which is a multiple of 3 ("Q"), a buzz enemy which is a multiple of 5 ("E") or the dreaded xenobuzz which is a multiple of both 3 and 5 ("W")')
             xenoPrint('however, the xenobuzz are feared mainly because of how fast their attacks ramp up, and it could get overwhelming really quickly.')
+            xenoNL()
+            xenoPrint("W: Multiple of 3 AND 5")
+            xenoPrint("E: Multiple of 5")
+            xenoPrint("Q: Multiple of 3")
+            xenoPrint("S: Everything else")
         elif menuInput.upper() == "S":
             counterL = 1
             notLost = True
@@ -131,7 +136,7 @@ else:
                         threadW.start()
                         threadO = Thread(target=detect_key_pressO)
                         threadO.start()
-                        incrementSleep = (4 / (counterL ** (1 / 10))) / 10
+                        incrementSleep = (2.5 / (counterL ** (1 / 7))) / 10
                         for i in range(11):
                             xenoPrintOver('--' * (10-i))
                             time.sleep(incrementSleep)
@@ -148,8 +153,7 @@ else:
                                 break
                         xenoPrintOver("XENOBUZZ" + "\n")
                         if not notLost:
-                            xenoPrint(
-                                "Didn't press it in time. Game over. Planet doomed, civilisation over, etcetc u ruined everyone's life")
+                            xenoPrint("Didn't press it in time or pressed the wrong button. Game over. Planet doomed, civilisation over, etcetc u ruined everyone's life")
                             xenoPrint("You did get past " + str(counterL) + " enemies though")
                             break
                         counterL += 1
@@ -175,7 +179,7 @@ else:
                         threadE.start()
                         threadO = Thread(target=detect_key_pressO)
                         threadO.start()
-                        incrementSleep = (4 / (counterL ** (1 / 10))) / 10
+                        incrementSleep = (2.5 / (counterL ** (1 / 7))) / 10
                         for i in range(11):
                             xenoPrintOver('--' * (10-i))
                             time.sleep(incrementSleep)
@@ -192,8 +196,7 @@ else:
                                 break
                         xenoPrintOver("BUZZ" + "\n")
                         if not notLost:
-                            xenoPrint(
-                                "Didn't press it in time. Game over. Planet doomed, civilisation over, etcetc u ruined everyone's life")
+                            xenoPrint("Didn't press it in time or pressed the wrong button. Game over. Planet doomed, civilisation over, etcetc u ruined everyone's life")
                             xenoPrint("You did get past " + str(counterL) + " enemies though")
                             break
                         counterL += 1
@@ -221,7 +224,7 @@ else:
                         threadQ.start()
                         threadO = Thread(target=detect_key_pressO)
                         threadO.start()
-                        incrementSleep = (4 / (counterL ** (1 / 10))) / 10
+                        incrementSleep = (2.5 / (counterL ** (1 / 7))) / 10
                         for i in range(11):
                             xenoPrintOver('--' * (10-i))
                             time.sleep(incrementSleep)
@@ -238,8 +241,7 @@ else:
                                 break
                         xenoPrintOver("XENO" + "\n")
                         if not notLost:
-                            xenoPrint(
-                                "Didn't press it in time. Game over. Planet doomed, civilisation over, etcetc u ruined everyone's life")
+                            xenoPrint("Didn't press it in time or pressed the wrong button. Game over. Planet doomed, civilisation over, etcetc u ruined everyone's life")
                             xenoPrint("You did get past " + str(counterL) + " enemies though")
                             break
                         counterL += 1
@@ -267,7 +269,7 @@ else:
                         threadS.start()
                         threadO = Thread(target=detect_key_pressO)
                         threadO.start()
-                        incrementSleep = (4 / (counterL ** (1 / 10))) / 10
+                        incrementSleep = (2 / (counterL ** (1 / 5))) / 10
                         for i in range(11):
                             xenoPrintOver('--' * (10-i))
                             time.sleep(incrementSleep)
