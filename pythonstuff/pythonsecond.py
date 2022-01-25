@@ -386,6 +386,7 @@ else:
                         # increase counter of counterL by 1 to progress the game
                         counterL += 1
                         break
+                xenoPrintOver("")
                 time.sleep(0.5)
 
         # press F to close the game
