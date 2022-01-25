@@ -55,9 +55,9 @@ def xenoNL():
 print("\n")
 
 while True:
-    xenoPrint("a secret experimental version of fizzbuzz has escaped area 51 ")
-    xenoPrint("and we're looking for patients brave enough to try and figure it out")
-    yesorno = xenoInput('are you up to the task? Y/N').strip()
+    xenoPrint("a secret experimental version of fizzbuzz has escaped area 51 ".upper())
+    xenoPrint("and we're looking for patients brave enough to try and figure it out".upper())
+    yesorno = xenoInput('are you up to the task? Y/N'.upper()).strip()
     if yesorno.upper() == "Y":
         xenoPrint("you have entered the xenobuzz".upper())
         theGame = True
@@ -371,6 +371,7 @@ else:
 
 # kills any outstanding threads
 roundOver = True
+
 #  my personal favourite words to use are ronk and bonk
 #  but the world is your oyster
 #  also my highscore on xenobuzz was only 36, try to beat my score maybe
