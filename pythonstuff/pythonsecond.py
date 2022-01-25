@@ -21,11 +21,13 @@ def xenoPrintOver(string):
 def xenoNL():
     print(XENO)
 
+# visual clarity
+print("\n")
 
 while True:
-    print("a secret experimental version of fizzbuzz has escaped area 51 and "
-          "we're looking for patients brave enough to try and figure it out")
-    yesorno = input('are you up to the task? Y/N\n').strip()
+    xenoPrint("a secret experimental version of fizzbuzz has escaped area 51 ")
+    xenoPrint("and we're looking for patients brave enough to try and figure it out")
+    yesorno = xenoInput('are you up to the task? Y/N').strip()
     if yesorno.upper() == "Y":
         xenoPrint("you have entered the xenobuzz".upper())
         theGame = True
@@ -399,6 +401,7 @@ else:
 #  my personal favourite words to use are ronk and bonk
 #  but the world is your oyster
 #  also my highscore on xenobuzz was only 36, try to beat my score maybe
+#  my highscore is now 41
 #  a̶l̶s̶o̶ ̶m̶y̶ ̶c̶o̶m̶m̶e̶n̶t̶s̶ ̶a̶r̶e̶ ̶k̶i̶n̶d̶a̶ ̶m̶e̶s̶s̶y̶ ̶t̶o̶ ̶b̶e̶ ̶r̶i̶g̶h̶t̶ ̶a̶f̶t̶e̶r̶ ̶e̶a̶c̶h̶
 #  l̶i̶n̶e̶ ̶i̶n̶s̶t̶e̶a̶d̶ ̶o̶f̶ ̶b̶e̶f̶o̶r̶e̶ ̶s̶o̶ ̶m̶a̶y̶b̶e̶ ̶t̶h̶a̶t̶ ̶c̶o̶u̶l̶d̶ ̶b̶e̶ ̶i̶m̶p̶r̶o̶v̶e̶d̶
 #  nvm my comments suck again for the xenobuzz gamemode
