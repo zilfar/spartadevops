@@ -1,3 +1,33 @@
+# repeating section, turned into function
+def iterate():
+    global xenoPrintOver
+    global wkey_pressed
+    global roundOver
+    global notLost
+
+    incrementSleep = (2.5 / (counterL ** (1 / 7))) / 10
+    for i in range(11):
+        xenoPrintOver('--' * (10 - i))
+        time.sleep(incrementSleep)
+
+        # if the wrong key is pressed
+        if wkey_pressed:
+            notLost = False
+            break
+
+        # if the right key is pressed
+        elif key_pressed:
+            wkey_pressed = False
+            roundOver = True
+            break
+
+        # if they key isn't pressed, check if the time is over
+        elif i == 10 and not key_pressed:
+            notLost = False
+            roundOver = True
+            break
+
+
 noInput = True  # have boolean that i can change to break out of while loop
 theGame = False  # super secret high technology variable (don't look into it if you value your life)
 
@@ -49,7 +79,7 @@ while noInput:
     rangeF = input("up to what final number would you like to play fizzbuzz\n")
 
     # make sure user input is an integer which is larger than 0 and start point is lower than end
-    if (rangeF.isnumeric() and int(rangeF) > 0) and (rangeS.isnumeric() and int(rangeS) < int(rangeF)):
+    if (rangeF.isdigit() and int(rangeF) > 0) and (rangeS.isdigit() and int(rangeS) < int(rangeF)):
 
         # ask user for first word to use instead of fizz
         firstWord = input('next, add an alternative word for \'fizz\', leave it empty to keep fizz.\n').upper()
@@ -91,7 +121,7 @@ if not theGame:
         # if they're a factor of 3 and 5 then by simplification they're also a factor of 15, makes it easier to write,
         # so we bring out the fizzbuzz
         if x % 15 == 0:
-            print("waaa")
+            print(firstWord + secondWord)
 
         # otherwise, check if it's at least a factor of 3, then bring out the fizz
         elif x % 3 == 0:
@@ -154,7 +184,7 @@ else:
                     # right keypress and one for the incorrect keypresses
                     def detect_key_pressW():
                         global key_pressed
-                        while not keyboard.is_pressed('w'):
+                        while not keyboard.is_pressed('w') and not roundOver:
                             pass
                         key_pressed = True
 
@@ -221,7 +251,7 @@ else:
 
                     def detect_key_pressE():
                         global key_pressed
-                        while not keyboard.is_pressed('e'):
+                        while not keyboard.is_pressed('e') and not roundOver:
                             pass
                         key_pressed = True
 
@@ -237,27 +267,7 @@ else:
                         threadE.start()
                         threadO = Thread(target=detect_key_pressO)
                         threadO.start()
-                        incrementSleep = (2.5 / (counterL ** (1 / 7))) / 10
-                        for i in range(11):
-                            xenoPrintOver('--' * (10 - i))
-                            time.sleep(incrementSleep)
-
-                            # if the wrong key is pressed
-                            if wkey_pressed:
-                                notLost = False
-                                break
-
-                            # if the right key is pressed
-                            elif key_pressed:
-                                wkey_pressed = False
-                                roundOver = True
-                                break
-
-                            # if they key isn't pressed, check if the time is over
-                            elif i == 10 and not key_pressed:
-                                notLost = False
-                                roundOver = True
-                                break
+                        iterate()
                         xenoPrintOver("BUZZ" + "\n")
 
                         # game lost
@@ -278,7 +288,7 @@ else:
 
                     def detect_key_pressQ():
                         global key_pressed
-                        while not keyboard.is_pressed('q'):
+                        while not keyboard.is_pressed('q') and not roundOver:
                             pass
                         key_pressed = True
 
@@ -295,27 +305,7 @@ else:
                         threadQ.start()
                         threadO = Thread(target=detect_key_pressO)
                         threadO.start()
-                        incrementSleep = (2.5 / (counterL ** (1 / 7))) / 10
-                        for i in range(11):
-                            xenoPrintOver('--' * (10 - i))
-                            time.sleep(incrementSleep)
-
-                            # if the wrong key is pressed
-                            if wkey_pressed:
-                                notLost = False
-                                break
-
-                            # if the right key is pressed
-                            elif key_pressed:
-                                wkey_pressed = False
-                                roundOver = True
-                                break
-
-                            # if they key isn't pressed, check if the time is over
-                            elif i == 10 and not key_pressed:
-                                notLost = False
-                                roundOver = True
-                                break
+                        iterate()
                         xenoPrintOver("XENO" + "\n")
 
                         # game lost
@@ -336,44 +326,25 @@ else:
 
                     def detect_key_pressS():
                         global key_pressed
-                        while not keyboard.is_pressed('s'):
+                        while not keyboard.is_pressed('s') and not roundOver:
                             pass
                         key_pressed = True
 
+
                     def detect_key_pressO():
                         global wkey_pressed
-                        while not keyboard.is_pressed('q')\
+                        while not keyboard.is_pressed('q') \
                                 and not keyboard.is_pressed('w') and not keyboard.is_pressed('e') and not roundOver:
                             pass
                         wkey_pressed = True
 
 
                     while True:
-                        threadS = Thread(target=detect_key_pressS)
-                        threadS.start()
+                        threadQ = Thread(target=detect_key_pressS)
+                        threadQ.start()
                         threadO = Thread(target=detect_key_pressO)
                         threadO.start()
-                        incrementSleep = (2 / (counterL ** (1 / 5))) / 10
-                        for i in range(11):
-                            xenoPrintOver('--' * (10 - i))
-                            time.sleep(incrementSleep)
-
-                            # if the wrong key is pressed
-                            if wkey_pressed:
-                                notLost = False
-                                break
-
-                            # if the right key is pressed
-                            elif key_pressed:
-                                wkey_pressed = False
-                                roundOver = True
-                                break
-
-                            # if they key isn't pressed, check if the time is over
-                            elif i == 10 and not key_pressed:
-                                notLost = False
-                                roundOver = True
-                                break
+                        iterate()
                         xenoPrintOver(str(counterL) + "\n")
 
                         # game lost
@@ -398,7 +369,8 @@ else:
         else:
             xenoPrint("no clue what you just input, try again".upper())
 
-
+# kills any outstanding threads
+roundOver = True
 #  my personal favourite words to use are ronk and bonk
 #  but the world is your oyster
 #  also my highscore on xenobuzz was only 36, try to beat my score maybe
@@ -407,3 +379,4 @@ else:
 #  l̶i̶n̶e̶ ̶i̶n̶s̶t̶e̶a̶d̶ ̶o̶f̶ ̶b̶e̶f̶o̶r̶e̶ ̶s̶o̶ ̶m̶a̶y̶b̶e̶ ̶t̶h̶a̶t̶ ̶c̶o̶u̶l̶d̶ ̶b̶e̶ ̶i̶m̶p̶r̶o̶v̶e̶d̶
 #  nvm my comments suck again for the xenobuzz gamemode
 #  ok the comments kinda improved
+
