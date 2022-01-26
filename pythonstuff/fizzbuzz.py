@@ -1,4 +1,5 @@
 # repeating section, turned into function
+
 def iterate():
     global xenoPrintOver
     global wkey_pressed
@@ -38,9 +39,11 @@ XENO = "---------------------------------------- "
 def xenoPrint(string):
 
     print(XENO + string)
+    time.sleep(0.8)
 
 
 def xenoInput(string):
+    time.sleep(0.8)
     return input(XENO + string + "\n" + XENO)
 
 
@@ -50,6 +53,7 @@ def xenoPrintOver(string):
 
 def xenoNL():
     print(XENO)
+
 
 # visual clarity
 print("\n")
@@ -209,7 +213,7 @@ else:
                         # begin with, and decelerates as you go on)
                         incrementSleep = (2.5 / (counterL ** (1 / 7))) / 10
                         for i in range(11):
-                            xenoPrintOver('--' * (10-i))
+                            xenoPrintOver('--' * (10 - i))
                             time.sleep(incrementSleep)
 
                             # if the wrong key is pressed
@@ -375,9 +379,8 @@ roundOver = True
 #  my personal favourite words to use are ronk and bonk
 #  but the world is your oyster
 #  also my highscore on xenobuzz was only 36, try to beat my score maybe
-#  my highscore is now 41
+#  my highscore is now 85
 #  a̶l̶s̶o̶ ̶m̶y̶ ̶c̶o̶m̶m̶e̶n̶t̶s̶ ̶a̶r̶e̶ ̶k̶i̶n̶d̶a̶ ̶m̶e̶s̶s̶y̶ ̶t̶o̶ ̶b̶e̶ ̶r̶i̶g̶h̶t̶ ̶a̶f̶t̶e̶r̶ ̶e̶a̶c̶h̶
 #  l̶i̶n̶e̶ ̶i̶n̶s̶t̶e̶a̶d̶ ̶o̶f̶ ̶b̶e̶f̶o̶r̶e̶ ̶s̶o̶ ̶m̶a̶y̶b̶e̶ ̶t̶h̶a̶t̶ ̶c̶o̶u̶l̶d̶ ̶b̶e̶ ̶i̶m̶p̶r̶o̶v̶e̶d̶
 #  nvm my comments suck again for the xenobuzz gamemode
 #  ok the comments kinda improved
-
