@@ -18,14 +18,16 @@ class Rectangle:
     def setLength(self, new_length):
         self.length = float(new_length)
 
-    def drawRectangle(self):
+    def draw(self):
         if self.length > 50 or self.width > 50:
             return "Too big for picture."
+        finalString = """"""
         for x in range(int(self.length)):
             if x == 0 or x == int(self.length)-1:
-                print("\" " * int(self.width))
+                finalString += "\" " * int(self.width) + "\n"
             else:
-                print("\"" + (" "  * (int(self.width) * 2 - 3) + "\""))
+                finalString += "\"" + (" "  * (int(self.width) * 2 - 3) + "\"") + "\n"
+        return finalString
 
 
     def __str__(self):
@@ -55,16 +57,13 @@ class Square(Rectangle):
     def __repr__(self):
         return f"Square(length={self.length})"
 
-    def drawSquare(self):
+    def draw(self):
         if self.length > 50:
             return "Too big for picture."
+        finalString = """"""
         for x in range(int(self.length)):
             if x == 0 or x == int(self.length)-1:
-                print("\" " * int(self.length))
+                finalString += "\" " * int(self.length) + "\n"
             else:
-                print("\"" + (" "  * (int(self.length) * 2 - 3) + "\""))
-
-# square1 = Square(4)
-# print(square1)
-# print(Square(4).length)
-# print(Square(20))
+                finalString += "\"" + (" " * (int(self.length) * 2 - 3) + "\"\n")
+        return finalString
