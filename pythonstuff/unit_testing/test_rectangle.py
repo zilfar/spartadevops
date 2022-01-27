@@ -44,7 +44,7 @@ def test_square_reprstr():
     assert Square(20).__str__() == f"This is a Square with length size: {Square(20).length}."
 
 
-def testSetLengthWidth():
+def test_set_length_width():
     new_square = Square(40)
     new_square.setLength(20)
     assert new_square.length == 20
@@ -55,3 +55,5 @@ def testSetLengthWidth():
     assert new_rectangle.width == 40
     new_rectangle.setLength(90)
     assert new_rectangle.length == 90
+
+
