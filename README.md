@@ -1,11 +1,13 @@
 # eng103a
 
 ```python
-def ohno(ohyes):
-  print("yes" + ohyes)
-ohno('ohno')
+def testingMarkIp(word):
+  print("This is a test to visualise how MarkUp looks on GitHub.")
+  return
 ```
 
-- Yes
-- No
-- Maybe
+- Testing
+- Bullet
+- Points
+
+`pythonstuff` folder contains a variety of python exercises I've completed and developed on to flesh out my python, as well as a unit_testing folder where I made sure I knew how to unit_test software with pytest.
